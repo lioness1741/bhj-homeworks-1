@@ -17,3 +17,4 @@ const tabChange = (event) => {
 for (let tab of tabMenu) {
   tab.addEventListener("click", tabChange);
 }
+

@@ -1,9 +1,10 @@
 class Game {
   constructor(container) {
     this.container = container;
-    this.wordElement = container.querySelector('.word');
-    this.winsElement = container.querySelector('.status__wins');
-    this.lossElement = container.querySelector('.status__loss');
+    this.wordElement = container.querySelector(".word");
+    this.winsElement = container.querySelector(".status__wins");
+    this.lossElement = container.querySelector(".status__loss");
+    this.timerElement = container.querySelector(".status__timer");
 
     this.reset();
 
@@ -23,7 +24,8 @@ class Game {
       } else {
         this.fail();
       }
-    })
+    });
+
     /* Написать обработчик события, который откликается
       на каждый введённый символ.
       В случае правильного ввода слова вызываем this.success()
@@ -66,8 +68,8 @@ class Game {
 
   setNewWord() {
     const word = this.getWord();
-
     this.renderWord(word);
+    this.renderTimer(word);
   }
 
   getWord() {
@@ -99,26 +101,27 @@ class Game {
     this.wordElement.innerHTML = html;
 
     this.currentSymbol = this.wordElement.querySelector('.symbol_current');
-  }
-}
-
-const timer = document.getElementById("timer");
-
-const timerCountDown = () => {     
-  this.timerElement.textContent = word.length; //counter - 1;
-  let time = word.length;
-  clearInterval(countDown);
   
-  this.countDown = setInterval(() =>                              
-  if (time > 0) {
-    time -=1;
-   this.timerElement.textContent = time;    
-  }   else {
-    this.timerElement.textContent = time;   
-    this.fail;
-  }, 1000);
 }
 
+//interval
+  renderTimer(word) {
+	 this.timerElement.textContent = word.length; 
+	 let time = word.length;
+	 clearInterval(this.countDown);
+
+	 this.countDown = setInterval(() =>  {
+	 	if (time > 0) {
+    		time -=1;
+   			this.timerElement.textContent = time;    
+ 	 	}   else {
+    		this.timerElement.textContent = time;   
+    		this.fail();
+	 		}
+		},1000);
+	} 
+}
+//interval
 
 new Game(document.getElementById('game'));
 
