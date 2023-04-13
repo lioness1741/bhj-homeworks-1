@@ -2,12 +2,12 @@ const menuLink = document.querySelectorAll(".menu__link");
 
 menuLink.forEach((element) => {
   let menuSub = element.closest(".menu__item").querySelector(".menu_sub");
-  if (menuSub === false) {
+  if (!menuSub) {
     return;
   }
 
   element.onclick = function () {
-    menuSub.className = "menu menu_sub menu_active";
+    menuSub.classList.toggle("menu_active");
     return false;
   };
 });
