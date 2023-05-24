@@ -2,6 +2,9 @@ const fontSize = [...document.querySelectorAll(".font-size")];
 const book = document.querySelector(".book");
 
 function bookControl(item) {
+
+  event.preventDefault();
+
   fontSize.forEach(e => e.classList.remove("font-size_active"));
     item.classList.add("font-size_active");
     if(item.dataset.size === "small") {
