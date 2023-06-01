@@ -13,7 +13,7 @@ if (storedId) {
 
 signInBtn.addEventListener("click", (event) => {
   event.preventDefault();
-
+  event.target.reset(); 
   const formData = new FormData(signInForm);
   const xhr = new XMLHttpRequest();
   xhr.addEventListener("readystatechange", () => {
